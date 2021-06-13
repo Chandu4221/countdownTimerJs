@@ -1,6 +1,6 @@
 const timer = new CountDownTimer(
-  { startHour: 10, startMinute: 10, startSecond: 10 },
-  { endHour: 12, endMinute: 12, endSecond: 12 }
+  { startHour: 15, startMinute: 59, startSecond: 00 },
+  { endHour: 16, endMinute: 00, endSecond: 00 }
 );
 
 function start() {

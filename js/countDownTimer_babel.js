@@ -115,8 +115,6 @@ class CountDownTimer {
     _intervalFunction.set(this, {
       writable: true,
       value: (callback) => {
-        _classPrivateFieldSet(this, _currentTime, new Date().getTime());
-
         _classPrivateFieldSet(
           this,
           _remainingTime,
@@ -126,14 +124,19 @@ class CountDownTimer {
             _getTimeRemaining2
           ).call(
             this,
-            _classPrivateFieldGet(this, _currentTime),
+            _classPrivateFieldGet(this, _startTime),
             _classPrivateFieldGet(this, _endTime)
           )
         );
 
+        _classPrivateFieldSet(
+          this,
+          _startTime,
+          _classPrivateFieldGet(this, _startTime) + 1000
+        );
+
         if (
-          _classPrivateFieldGet(this, _currentTime) >=
-          _classPrivateFieldGet(this, _endTime)
+          !_classPrivateFieldGet(this, _remainingTime).totalTimeInMilliSeconds
         )
           clearInterval(_classPrivateFieldGet(this, _interval));
         callback(_classPrivateFieldGet(this, _remainingTime));

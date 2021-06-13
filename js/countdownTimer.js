@@ -9,13 +9,15 @@ class CountDownTimer {
   #isRunning = false;
 
   #intervalFunction = (callback) => {
-    this.#currentTime = new Date().getTime();
     this.#remainingTime = this.#getTimeRemaining(
-      this.#currentTime,
+      this.#startTime,
       this.#endTime
     );
 
-    if (this.#currentTime >= this.#endTime) clearInterval(this.#interval);
+    this.#startTime += 1000;
+
+    if (!this.#remainingTime.totalTimeInMilliSeconds)
+      clearInterval(this.#interval);
     callback(this.#remainingTime);
   };
 
