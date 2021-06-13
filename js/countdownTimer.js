@@ -1,5 +1,4 @@
 class CountDownTimer {
-  #startTime = null;
   #endTime = null;
   #interval = null;
   #currentTime = null;
@@ -19,11 +18,7 @@ class CountDownTimer {
     callback(this.#remainingTime);
   };
 
-  constructor(
-    { startHour = 0, startMinute = 0, startSecond = 0 },
-    { endHour = 0, endMinute = 0, endSecond = 0 }
-  ) {
-    this.#startTime = new Date().setHours(startHour, startMinute, startSecond);
+  constructor({ endHour = 0, endMinute = 0, endSecond = 0 }) {
     this.#endTime = new Date().setHours(endHour, endMinute, endSecond);
   }
 
@@ -56,7 +51,6 @@ class CountDownTimer {
   }
 
   reset() {
-    this.#startTime = null;
     this.#endTime = null;
     this.#interval = null;
     this.#currentTime = null;

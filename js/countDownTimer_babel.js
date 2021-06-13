@@ -45,8 +45,6 @@ function _classApplyDescriptorSet(receiver, descriptor, value) {
   }
 }
 
-var _startTime = /*#__PURE__*/ new WeakMap();
-
 var _endTime = /*#__PURE__*/ new WeakMap();
 
 var _interval = /*#__PURE__*/ new WeakMap();
@@ -66,16 +64,8 @@ var _intervalFunction = /*#__PURE__*/ new WeakMap();
 var _getTimeRemaining = /*#__PURE__*/ new WeakSet();
 
 class CountDownTimer {
-  constructor(
-    { startHour = 0, startMinute = 0, startSecond = 0 },
-    { endHour = 0, endMinute = 0, endSecond = 0 }
-  ) {
+  constructor({ endHour = 0, endMinute = 0, endSecond = 0 }) {
     _getTimeRemaining.add(this);
-
-    _startTime.set(this, {
-      writable: true,
-      value: null,
-    });
 
     _endTime.set(this, {
       writable: true,
@@ -142,12 +132,6 @@ class CountDownTimer {
 
     _classPrivateFieldSet(
       this,
-      _startTime,
-      new Date().setHours(startHour, startMinute, startSecond)
-    );
-
-    _classPrivateFieldSet(
-      this,
       _endTime,
       new Date().setHours(endHour, endMinute, endSecond)
     );
@@ -205,8 +189,6 @@ class CountDownTimer {
   }
 
   reset() {
-    _classPrivateFieldSet(this, _startTime, null);
-
     _classPrivateFieldSet(this, _endTime, null);
 
     _classPrivateFieldSet(this, _interval, null);
